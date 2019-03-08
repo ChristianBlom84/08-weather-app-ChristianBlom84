@@ -1,6 +1,8 @@
 import React from 'react';
-
+import '../index.css';
 import WeatherOverview from './WeatherOverview';
+
+
 
 export default class ApiDarkSky extends React.Component {
   constructor(props) {
@@ -67,9 +69,7 @@ export default class ApiDarkSky extends React.Component {
     } else {
       return(
         <div>
-          <h2>Dark Sky Component</h2>
-          <h3>Current weather conditions in your location:</h3>
-          <div>{isLoaded ? apiReponse.daily.summary : "Please allow access to your location for local weather data."}</div>
+          <h2>Current weather conditions in your location:</h2>
           <WeatherOverview weather={this.state.apiReponse} isLoaded={this.state.isLoaded} />
         </div>
       )

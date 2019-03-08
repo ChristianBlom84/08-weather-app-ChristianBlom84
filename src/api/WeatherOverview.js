@@ -1,14 +1,21 @@
 import React from 'react';
-import Skycons from 'skycons';
+import Skycons from 'react-skycons';
+import '../index.css';
 
 function WeatherOverview(props) {
-  const skycons = new Skycons();
-  
+  const { weather } = props;
+
   if (props.isLoaded) {
     return (
-      <section>
-        <h2>{props.weather.currently.temperature.toFixed(1)}°</h2>
-        <canvas id="icon1" width="128" height="128">{skycons.add("icon1", "rain")}</canvas>
+      <section className="weatherBox">
+        <h2>{weather.currently.temperature.toFixed(1)}°</h2>
+        <Skycons
+        icon={weather.currently.icon.toUpperCase().replace('-', '_')}
+        style={{}}
+        width="64px"
+        height="64px"
+        />
+        <p>{weather.currently.summary}</p>
       </section>
     )
   }

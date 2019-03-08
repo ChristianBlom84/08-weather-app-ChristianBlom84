@@ -6,7 +6,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
-    "skycons": "^1.0.0"
+    "react-skycons": "^0.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
