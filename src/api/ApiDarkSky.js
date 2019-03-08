@@ -1,5 +1,7 @@
 import React from 'react';
 
+import WeatherOverview from './WeatherOverview';
+
 export default class ApiDarkSky extends React.Component {
   constructor(props) {
     super(props);
@@ -7,7 +9,8 @@ export default class ApiDarkSky extends React.Component {
     this.state = {
       apiResponse: {},
       error: null,
-      isLoaded: false
+      isLoaded: false,
+      position: null
     };
 
     this.apiKey = process.env.REACT_APP_DARKSKY_API_KEY;
@@ -17,8 +20,7 @@ export default class ApiDarkSky extends React.Component {
   }
 
   getCurrentWeather() {
-    console.log(this.props.location);
-    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.stockholm}${this.options}`)
+    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.options}`)
       .then(res => {
         return res.json();
       })
@@ -42,7 +44,20 @@ export default class ApiDarkSky extends React.Component {
   };
 
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(pos => {
+      this.setState({
+        position: `/${pos.coords.latitude}, ${pos.coords.longitude}`
+      })
+      console.log(pos);
+      this.getCurrentWeather();
+    }, error => {
+      this.setState({
+        position: this.stockholm
+      })
+      this.getCurrentWeather();
+    })
 
+    console.log(this.state.position);
   }
 
   render() {
@@ -53,8 +68,9 @@ export default class ApiDarkSky extends React.Component {
       return(
         <div>
           <h2>Dark Sky Component</h2>
-          <button onClick={() => this.getCurrentWeather(this.stockholm)}>Check the weather in Stockholm</button>
-          <div>{isLoaded ? apiReponse.daily.summary : "Press the button for weather!"}</div>
+          <h3>Current weather conditions in your location:</h3>
+          <div>{isLoaded ? apiReponse.daily.summary : "Please allow access to your location for local weather data."}</div>
+          <WeatherOverview weather={this.state.apiReponse} isLoaded={this.state.isLoaded} />
         </div>
       )
     }
