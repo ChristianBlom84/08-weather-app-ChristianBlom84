@@ -70,7 +70,7 @@ export default class ApiDarkSky extends React.Component {
       return(
         <div>
           <h2>Current weather conditions in your location:</h2>
-          <WeatherOverview weather={this.state.apiReponse} isLoaded={this.state.isLoaded} />
+          <WeatherOverview weather={apiReponse} isLoaded={isLoaded} />
         </div>
       )
     }
