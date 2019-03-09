@@ -29,7 +29,7 @@ export default class ApiDarkSky extends React.Component {
       .then(weather => {
         this.setState({
           isLoaded: true,
-          apiReponse: weather
+          apiResponse: weather
         })
         if (this.state.isLoaded) {
           console.log(weather);
@@ -63,14 +63,14 @@ export default class ApiDarkSky extends React.Component {
   }
 
   render() {
-    const { apiReponse, error, isLoaded } = this.state;
+    const { apiResponse, error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else {
       return(
         <div>
           <h2>Current weather conditions in your location:</h2>
-          <WeatherOverview weather={apiReponse} isLoaded={isLoaded} />
+          <WeatherOverview weather={apiResponse} isLoaded={isLoaded} />
         </div>
       )
     }

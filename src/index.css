@@ -19,9 +19,14 @@ h1, h2, h3 {
 .weatherBox {
   padding: 1rem;
   display: flex;
-  flex-flow: row wrap;
-  align-items: start;
+  flex-flow: column nowrap;
   justify-content: space-between;
-  max-width: 250px;
-  min-height: 200px;
+  max-width: 300px;
+  min-height: 300px;
+}
+
+.skyconBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
