@@ -66,13 +66,15 @@ export default class ApiDarkSky extends React.Component {
     const { apiResponse, error, isLoaded } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
-    } else {
+    } else if (isLoaded) {
       return(
         <div>
           <h2>Current weather conditions in your location:</h2>
           <WeatherOverview weather={apiResponse} isLoaded={isLoaded} />
         </div>
-      )
+      );
+    } else {
+      return(<p>Loading...</p>);
     }
   }
 }
