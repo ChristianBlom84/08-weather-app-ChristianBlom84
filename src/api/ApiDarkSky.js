@@ -12,17 +12,17 @@ export default class ApiDarkSky extends React.Component {
       apiResponse: {},
       error: null,
       isLoaded: false,
-      position: null
+      position: null,
+      options: "?units=auto"
     };
 
     this.apiKey = process.env.REACT_APP_DARKSKY_API_KEY;
     this.baseApiUrl = "https://api.darksky.net/forecast/";
     this.stockholm = "/59.3260668, 17.841971";
-    this.options = "?units=auto"
   }
 
   getCurrentWeather() {
-    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.options}`)
+    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.state.options}`)
       .then(res => {
         return res.json();
       })
@@ -69,7 +69,6 @@ export default class ApiDarkSky extends React.Component {
     } else if (isLoaded) {
       return(
         <div>
-          <h2>Current weather conditions in your location:</h2>
           <WeatherOverview weather={apiResponse} isLoaded={isLoaded} />
         </div>
       );
