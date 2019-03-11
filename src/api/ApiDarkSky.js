@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.css';
 import WeatherOverview from './WeatherOverview';
-
+import { BrowserRouter } from 'react-router-dom';
 
 
 export default class ApiDarkSky extends React.Component {
@@ -12,8 +12,7 @@ export default class ApiDarkSky extends React.Component {
       apiResponse: {},
       error: null,
       isLoaded: false,
-      position: null,
-      options: "?units=auto"
+      position: null
     };
 
     this.apiKey = process.env.REACT_APP_DARKSKY_API_KEY;
@@ -22,7 +21,11 @@ export default class ApiDarkSky extends React.Component {
   }
 
   getCurrentWeather() {
-    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.state.options}`)
+    this.setState({
+      isLoaded: false
+    });
+
+    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.props.units}`)
       .then(res => {
         return res.json();
       })
@@ -60,6 +63,12 @@ export default class ApiDarkSky extends React.Component {
     })
 
     console.log(this.state.position);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.units !== prevProps.units) {
+      this.getCurrentWeather();
+    }
   }
 
   render() {

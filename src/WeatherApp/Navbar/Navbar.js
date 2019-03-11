@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Navbar() {
+function Navbar(props) {
+  console.log("Navbar props: ", props);
   return (
     <nav>
       <ul>
@@ -8,7 +9,10 @@ function Navbar() {
         <li><a href="#">Today's Weather</a></li>
         <li><a href="#">5 Day Prognosis</a></li>
       </ul>
-      <input type="dropdown"></input>
+      <div className="tempDiv">
+        <button className="tempBut" onClick={() => props.changeUnits("?units=si")}>°C</button>
+        <button className="tempBut" onClick={() => props.changeUnits("?units=us")}>°F</button>
+      </div>
     </nav>
   )
 }
