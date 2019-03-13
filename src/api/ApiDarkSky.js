@@ -1,8 +1,10 @@
 import React from 'react';
-import '../index.css';
-import WeatherOverview from './WeatherOverview';
-import { BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
+import '../index.css';
+import WeatherOverview from '../WeatherApp/WeatherOverview';
+import WeatherDaily from '../WeatherApp/WeatherDaily/WeatherDailyOverview';
+import WeatherFiveDayOverview from '../WeatherApp/WeatherFiveDay/WeatherFiveDayOverview';
 
 export default class ApiDarkSky extends React.Component {
   constructor(props) {
@@ -78,7 +80,18 @@ export default class ApiDarkSky extends React.Component {
     } else if (isLoaded) {
       return(
         <div>
-          <WeatherOverview weather={apiResponse} isLoaded={isLoaded} />
+          <Route
+            exact path="/"
+            render={(props) => <WeatherOverview {...props} weather={apiResponse} isLoaded={isLoaded} />}
+          />
+          <Route
+            path="/daily"
+            render={(props) => <WeatherDaily {...props} weather={apiResponse} isLoaded={isLoaded} />}
+          />
+          <Route
+            path="/fiveday"
+            render={(props) => <WeatherFiveDayOverview {...props} weather={apiResponse} isLoaded={isLoaded} />}
+          />
         </div>
       );
     } else {

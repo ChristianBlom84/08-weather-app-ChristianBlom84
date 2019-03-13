@@ -87,6 +87,12 @@ nav ul li a {
   width: 100%;
 }
 
+.weatherDailyContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 350px);
+  grid-gap: 0.5rem;
+}
+
 .tempDiv {
   width: 4rem;
 }
@@ -98,4 +104,70 @@ nav ul li a {
   height: 100%;
   width: 50%;
   font-size: 1rem;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+thead {
+  background: rgba(30,87,153,1);
+  color: white;
+}
+
+thead th:nth-child(2) {
+  min-width: 10rem;
+}
+
+th, td {
+  padding: 0.2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 500px) {
+  nav {
+    background: rgba(30,87,153,1);
+    color: white;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: stretch;
+    position: relative;
+  }
+
+  nav ul {
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul li {
+    flex: 1 0 auto;
+    text-align: center;
+    height: 2rem;
+    width: 100%;
+  }
+
+  nav ul li:nth-of-type(2) {
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    border-left: none;
+    border-right: none;
+  }
+
+  .tempDiv {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 100;
+  }
+
+
 }

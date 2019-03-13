@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar(props) {
   console.log("Navbar props: ", props);
   return (
     <nav>
       <ul>
-        <li><a href="#">Current Weather</a></li>
-        <li><a href="#">Today's Weather</a></li>
-        <li><a href="#">5 Day Prognosis</a></li>
+        <li><Link to="/">Current Weather</Link></li>
+        <li><Link to="/daily">Today's Weather</Link></li>
+        <li><a href="/fiveday">5 Day Prognosis</a></li>
       </ul>
       <div className="tempDiv">
         <button className="tempBut" onClick={() => props.changeUnits("?units=si")}>°C</button>
