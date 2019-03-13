@@ -13,7 +13,7 @@ function WeatherFiveDayComponent(props) {
     <section className='weatherBox'>
       <div className='skyconBox'>
         <h2></h2>
-        {/* <h2>{weather.temperature.toFixed(0)}°</h2> */}
+        <h2>Low: {weather.temperatureLow.toFixed(0)}° High: {weather.temperatureHigh.toFixed(0)}°</h2>
         <Skycons
         icon={weather.icon.toUpperCase().replace(/-/g, '_')}
         style={{}}
