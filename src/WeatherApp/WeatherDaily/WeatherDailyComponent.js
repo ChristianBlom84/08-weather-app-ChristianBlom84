@@ -1,8 +1,7 @@
 import React from 'react'
 import WeatherTableRow from './WeatherTableRow';
-import Skycons from 'react-skycons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon, faWind, faTint } from '@fortawesome/free-solid-svg-icons';
+import { faWind } from '@fortawesome/free-solid-svg-icons';
 
 function WeatherDailyComponent(props) {
   const { weather, hour } = props;
@@ -44,24 +43,6 @@ function WeatherDailyComponent(props) {
       </tbody>
     </table>
   )
-
-  // return (
-  //   <section className='weatherBox'>
-  //     <div className='skyconBox'>
-  //       <h2>{data[hour].temperature.toFixed(0)}°</h2>
-  //       <Skycons
-  //       icon={data[hour].icon.toUpperCase().replace(/-/g, '_')}
-  //       style={{}}
-  //       width='64px'
-  //       height='64px'
-  //       color='white'
-  //       />
-  //     </div>
-  //     <p><FontAwesomeIcon icon={faTint} /> Humidity: {(weather.currently.humidity * 100).toFixed(0)}%<br />
-  //     <FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.currently.windSpeed} {weather.flags.units === 'si' ? 'm/s' : 'mph'}</p>
-  //     <p className='summary'>{weather.currently.summary}</p>
-  //   </section>
-  // )
 }
 
 export default WeatherDailyComponent;
