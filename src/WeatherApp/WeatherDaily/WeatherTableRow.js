@@ -15,9 +15,7 @@ export default function WeatherTableRow(props) {
         color='rgba(30,87,153,1)'
         /></td>
       <td>{data.temperature.toFixed(0)}°</td>
-      {/* <td>{data.apparentTemperature.toFixed(0)}</td> */}
       <td>{(data.precipProbability * 100).toFixed(0)}%</td>
-      {/* <td>{(data.humidity * 100).toFixed(0)}%</td> */}
       <td>{data.windSpeed.toFixed(1)}</td>
     </tr>
   )

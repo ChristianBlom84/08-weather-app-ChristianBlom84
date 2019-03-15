@@ -10,6 +10,8 @@ function WeatherOverview(props) {
   const sunriseHours = () => sunriseTime.getHours() < 10 ? `0${sunriseTime.getHours()}` : sunriseTime.getHours();
   const sunriseMinutes = () => sunriseTime.getMinutes() < 10 ? `0${sunriseTime.getMinutes()}` : sunriseTime.getMinutes();
   const sunsetTime = new Date(weather.daily.data[0].sunsetTime * 1000);
+  const sunsetHours = () => sunsetTime.getHours() < 10 ? `0${sunsetTime.getHours()}` : sunsetTime.getHours();
+  const sunsetMinutes = () => sunsetTime.getMinutes() < 10 ? `0${sunsetTime.getMinutes()}` : sunsetTime.getMinutes();
   const currentTime = new Date(weather.currently.time * 1000);
 
   return (
@@ -28,7 +30,7 @@ function WeatherOverview(props) {
       <p><FontAwesomeIcon icon={faTint} /> Humidity: {(weather.currently.humidity * 100).toFixed(0)}%<br />
       <FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.currently.windSpeed} {weather.flags.units === 'si' ? 'm/s' : 'mph'}</p>
       <p><FontAwesomeIcon icon={faSun} /> Sunrise: {sunriseHours()}:{sunriseMinutes()}<br />
-      <FontAwesomeIcon icon={faMoon} /> Sunset: {sunsetTime.getHours()}:{sunsetTime.getMinutes()}</p>
+      <FontAwesomeIcon icon={faMoon} /> Sunset: {sunsetHours()}:{sunsetMinutes()}</p>
       <p className='summary'>{weather.currently.summary}</p>
     </section>
   )

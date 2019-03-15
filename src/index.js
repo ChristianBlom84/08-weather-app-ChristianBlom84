@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import WeatherApp from './WeatherApp/WeatherApp';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import WeatherApp from './WeatherApp/WeatherApp';
+import withLocationSearch from './WeatherApp/WithLocationSearch/withLocationSearch';
+
+const WrappedApp = withLocationSearch(WeatherApp);
 
 ReactDOM.render(
 <BrowserRouter>
-  <WeatherApp /> 
+  <WrappedApp /> 
 </BrowserRouter>,
 document.getElementById('root'));
 

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWind } from '@fortawesome/free-solid-svg-icons';
 
 function WeatherDailyComponent(props) {
-  const { weather, hour } = props;
+  const { weather } = props;
   const { data } = weather.hourly;
   const times = [
     new Date(data[0].time * 1000),

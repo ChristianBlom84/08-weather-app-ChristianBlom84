@@ -169,5 +169,12 @@ th, td {
     z-index: 100;
   }
 
+  main {
+    padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
 
 }
