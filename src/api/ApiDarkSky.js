@@ -27,7 +27,7 @@ export default class ApiDarkSky extends React.Component {
       isLoaded: false
     });
 
-    fetch(`http://localhost:8080/${this.baseApiUrl}${this.apiKey}${this.state.position}${this.props.units}`)
+    fetch(`${process.env.REACT_APP_CORS}${this.baseApiUrl}${this.apiKey}${this.state.position}${this.props.units}`)
       .then(res => {
         return res.json();
       })

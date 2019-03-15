@@ -18,7 +18,7 @@ export default function WeatherTableRow(props) {
       {/* <td>{data.apparentTemperature.toFixed(0)}</td> */}
       <td>{(data.precipProbability * 100).toFixed(0)}%</td>
       {/* <td>{(data.humidity * 100).toFixed(0)}%</td> */}
-      <td>{data.windSpeed}</td>
+      <td>{data.windSpeed.toFixed(1)}</td>
     </tr>
   )
 }

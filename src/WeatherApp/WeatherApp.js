@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './WeatherApp.css';
+import withLocationSearch from '../WeatherApp/WithLocationSearch/withLocationSearch';
 import ApiDarkSky from '../api/ApiDarkSky';
 import Navbar from './Navbar/Navbar';
 
