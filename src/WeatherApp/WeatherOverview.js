@@ -2,7 +2,6 @@ import React from 'react';
 import Skycons from 'react-skycons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faWind, faTint, faThermometerHalf } from '@fortawesome/free-solid-svg-icons';
-import '../index.css';
 
 function WeatherOverview(props) {
   const { weather } = props;

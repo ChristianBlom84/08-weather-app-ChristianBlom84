@@ -35,7 +35,6 @@ class WeatherApp extends Component {
   }
 
   handleSubmit(event) {
-    debugger;
     const { searchLocation } = this.props;
     event.preventDefault();
     this.setState({
@@ -47,8 +46,8 @@ class WeatherApp extends Component {
         if(res.results.length !== 0) {
           this.setState({
             coords: `${res.results[0].geometry.lat}, ${res.results[0].geometry.lng}`,
-            value: '',
-            locationName: res.results[0].formatted
+            locationName: res.results[0].formatted,
+            value: ''
           });
         } else {
           this.setState({
@@ -83,7 +82,7 @@ class WeatherApp extends Component {
     const { error, value } = this.state;
     return (
       <div className="mainContainer">
-        <Navbar changeUnits={this.changeUnits} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+        <Navbar changeUnits={this.changeUnits} />
         <main>
           <form className="locationForm" onSubmit={this.handleSubmit}>
             <input type="text" value={value} onChange={this.handleChange} placeholder="search for a location..." />

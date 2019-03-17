@@ -19,7 +19,6 @@ export default class ApiDarkSky extends React.Component {
 
     this.apiKey = process.env.REACT_APP_DARKSKY_API_KEY;
     this.baseApiUrl = "https://api.darksky.net/forecast/";
-    this.stockholm = "/59.3260668, 17.841971";
   }
 
   getCurrentWeather() {
@@ -27,26 +26,20 @@ export default class ApiDarkSky extends React.Component {
       isLoaded: false
     });
 
-    fetch(`${process.env.REACT_APP_CORS}${this.baseApiUrl}${this.apiKey}/${this.props.coords}${(this.props.units) ? this.props.units : this.state.position}`)
-      .then(res => {
-        return res.json();
-      })
+    fetch(`${process.env.REACT_APP_CORS}${this.baseApiUrl}${this.apiKey}/${this.props.coords}${(this.props.units) ? this.props.units : '?units=auto'}`)
+      .then(res => res.json())
       .then(weather => {
         this.setState({
           isLoaded: true,
           apiResponse: weather
-        })
-        if (this.state.isLoaded) {
-          console.log(weather);
-          console.log(this.state.apiResponse);
-        }
+        });
       })
       .catch(err => {
         this.setState({
           isLoaded: true,
           error: err
-        })
-        console.log("Error, something went wrong" + err);
+        });
+        console.error("Error, something went wrong" + err);
       })
   };
 

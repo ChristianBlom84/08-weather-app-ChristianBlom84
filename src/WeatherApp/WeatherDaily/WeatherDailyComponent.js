@@ -26,9 +26,7 @@ function WeatherDailyComponent(props) {
           <th scope="col">Time</th>
           <th scope="col">Sum.</th>
           <th scope="col">Temp.</th>
-          {/* <th scope="col">Feels&nbsp;like</th> */}
           <th scope="col">Precip.</th>
-          {/* <th scope="col">Humidity</th> */}
           <th scope="col"><FontAwesomeIcon icon={faWind} /></th>
         </tr>
       </thead>

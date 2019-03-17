@@ -15,9 +15,6 @@ html, body, #root {
 
 main {
   padding: 1rem;
-}
-
-main {
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -28,7 +25,7 @@ main {
 .mainContainer {
   display: flex;
   flex-flow: column nowrap;
-  height: 100%;
+  min-height: 100%;
 }
 
 .apiContainer {
@@ -209,6 +206,7 @@ th, td {
 footer {
   background: rgba(30,87,153,1);
   color: white;
+  margin-top: 2rem;
 }
 
 footer img {
@@ -262,9 +260,6 @@ footer img {
 
   main {
     padding: 0;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
   }
 
   .locationForm {
