@@ -28,7 +28,7 @@ function WeatherOverview(props) {
       </div>
       <p><FontAwesomeIcon icon={faThermometerHalf} /> Temp: {weather.currently.temperature.toFixed(0)}°</p>
       <p><FontAwesomeIcon icon={faTint} /> Humidity: {(weather.currently.humidity * 100).toFixed(0)}%<br />
-      <FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.currently.windSpeed} {weather.flags.units === 'si' ? 'm/s' : 'mph'}</p>
+      <FontAwesomeIcon icon={faWind} /> Wind Speed: {weather.currently.windSpeed.toFixed(1)} {weather.flags.units === 'si' ? 'm/s' : 'mph'}</p>
       <p><FontAwesomeIcon icon={faSun} /> Sunrise: {sunriseHours()}:{sunriseMinutes()}<br />
       <FontAwesomeIcon icon={faMoon} /> Sunset: {sunsetHours()}:{sunsetMinutes()}</p>
       <p className='summary'>{weather.currently.summary}</p>

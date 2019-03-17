@@ -14,7 +14,8 @@ function WeatherDailyComponent(props) {
     new Date(data[12].time * 1000),
     new Date(data[15].time * 1000),
     new Date(data[18].time * 1000),
-    new Date(data[21].time * 1000)
+    new Date(data[21].time * 1000),
+    new Date(data[24].time * 1000)
   ]
 
   return(
@@ -40,6 +41,7 @@ function WeatherDailyComponent(props) {
         <WeatherTableRow times={times[5]} data={data[15]} />
         <WeatherTableRow times={times[6]} data={data[18]} />
         <WeatherTableRow times={times[7]} data={data[21]} />
+        <WeatherTableRow times={times[8]} data={data[24]} />
       </tbody>
     </table>
   )

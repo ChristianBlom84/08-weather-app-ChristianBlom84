@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './WeatherApp.css';
 import ApiDarkSky from '../api/ApiDarkSky';
 import Navbar from './Navbar/Navbar';
+import Footer from './Footer/Footer'
 
 class WeatherApp extends Component {
   constructor(props) {
@@ -11,8 +12,8 @@ class WeatherApp extends Component {
       units: '?units=auto',
       value: '',
       searchLocation: '',
-      coords: '59.3260668, 17.841971',
-      locationName: 'Stockholm, Sweden',
+      coords: '',
+      locationName: '',
       error: null
     }
 
@@ -69,7 +70,7 @@ class WeatherApp extends Component {
           });
         });
       this.setState({
-        position: `${pos.coords.latitude}, ${pos.coords.longitude}`
+        coords: `${pos.coords.latitude}, ${pos.coords.longitude}`
       })
     }, error => {
       this.setState({
@@ -81,7 +82,7 @@ class WeatherApp extends Component {
   render() {
     const { error, value } = this.state;
     return (
-      <div>
+      <div className="mainContainer">
         <Navbar changeUnits={this.changeUnits} handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
         <main>
           <form className="locationForm" onSubmit={this.handleSubmit}>
@@ -90,8 +91,9 @@ class WeatherApp extends Component {
           </form>
           {error ? (<div className="error"><p>{error}</p></div>) : null}
           <h2>{this.state.locationName}</h2>
-          <ApiDarkSky coords={this.state.coords} units={this.state.units}/>
+          {this.state.coords ? (<ApiDarkSky coords={this.state.coords} units={this.state.units}/>) : <h3>Waiting for a location...</h3>}
         </main>
+        <Footer />
       </div>
     );
   }

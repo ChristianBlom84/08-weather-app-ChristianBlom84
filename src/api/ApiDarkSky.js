@@ -66,7 +66,7 @@ export default class ApiDarkSky extends React.Component {
       return <div>Error: {error.message}</div>;
     } else if (isLoaded) {
       return(
-        <div className="mainContainer">
+        <div className="apiContainer">
           <Route
             exact path="/"
             render={(props) => <WeatherOverview {...props} weather={apiResponse} isLoaded={isLoaded} />}
