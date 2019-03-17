@@ -17,7 +17,7 @@ function WeatherOverview(props) {
   return (
     <section className='weatherBox'>
       <div className='skyconBox'>
-        <h2>{currentTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})}</h2>
+        <h2>{currentTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false, timeZone: weather.timezone})}</h2>
         <Skycons
         icon={weather.currently.icon.toUpperCase().replace(/-/g, '_')}
         style={{}}

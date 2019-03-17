@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar(props) {
-  console.log("Navbar props: ", props);
   return (
     <nav>
       <ul>

@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import '../index.css';
 import WeatherOverview from '../WeatherApp/WeatherOverview';
-import WeatherDaily from '../WeatherApp/WeatherDaily/WeatherDailyOverview';
+import WeatherDailyComponent from '../WeatherApp/WeatherDaily/WeatherDailyComponent';
 import WeatherFiveDayOverview from '../WeatherApp/WeatherFiveDay/WeatherFiveDayOverview';
 
 export default class ApiDarkSky extends React.Component {
@@ -14,12 +14,12 @@ export default class ApiDarkSky extends React.Component {
       apiResponse: {},
       error: null,
       isLoaded: false,
-      // position: null
+      position: ''
     };
 
     this.apiKey = process.env.REACT_APP_DARKSKY_API_KEY;
     this.baseApiUrl = "https://api.darksky.net/forecast/";
-    // this.stockholm = "/59.3260668, 17.841971";
+    this.stockholm = "/59.3260668, 17.841971";
   }
 
   getCurrentWeather() {
@@ -27,7 +27,7 @@ export default class ApiDarkSky extends React.Component {
       isLoaded: false
     });
 
-    fetch(`${process.env.REACT_APP_CORS}${this.baseApiUrl}${this.apiKey}/${this.props.coords}${this.props.units}`)
+    fetch(`${process.env.REACT_APP_CORS}${this.baseApiUrl}${this.apiKey}/${this.props.coords}${(this.props.units) ? this.props.units : this.state.position}`)
       .then(res => {
         return res.json();
       })
@@ -51,20 +51,7 @@ export default class ApiDarkSky extends React.Component {
   };
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(pos => {
-      this.setState({
-        position: `/${pos.coords.latitude}, ${pos.coords.longitude}`
-      })
-      console.log(pos);
-      this.getCurrentWeather();
-    }, error => {
-      this.setState({
-        position: this.stockholm
-      })
-      this.getCurrentWeather();
-    })
-
-    console.log(this.state.position);
+    this.getCurrentWeather();
   }
 
   componentDidUpdate(prevProps) {
@@ -79,14 +66,14 @@ export default class ApiDarkSky extends React.Component {
       return <div>Error: {error.message}</div>;
     } else if (isLoaded) {
       return(
-        <div>
+        <div className="mainContainer">
           <Route
             exact path="/"
             render={(props) => <WeatherOverview {...props} weather={apiResponse} isLoaded={isLoaded} />}
           />
           <Route
             path="/daily"
-            render={(props) => <WeatherDaily {...props} weather={apiResponse} isLoaded={isLoaded} />}
+            render={(props) => <WeatherDailyComponent {...props} weather={apiResponse} isLoaded={isLoaded} />}
           />
           <Route
             path="/fiveday"
